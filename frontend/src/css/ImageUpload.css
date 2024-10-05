@@ -1,0 +1,168 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://officechai.com/wp-content/uploads/2016/02/flipkart-nearby.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 0 0 25px 25px; /* Full-radius at bottom */
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-links li {
+    cursor: pointer;
+  }
+  
+  .navbar-links li:hover {
+    text-decoration: underline;
+  }
+  
+  /* Container for card */
+  .image-upload-container {
+    padding: 150px 20px; /* Padding adjusted for spacing from navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Take full height minus the navbar */
+  }
+  
+  /* Upload Card Styling */
+  .upload-card {
+    max-width: 800px; /* Set max width for the card */
+    width: 100%; /* Make it responsive */
+    margin: 20px; /* Margin for the card */
+    padding: 30px; /* Padding for the card */
+    background-color: rgba(255, 255, 255, 0.95); /* White background with transparency */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    text-align: center;
+  }
+  
+  /* Heading */
+  .upload-card h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Date Display */
+  .current-date {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styles */
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Upload Input Styling */
+  #file-input {
+    display: none;
+  }
+  
+  .upload-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button {
+    padding: 12px 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Image Preview Styling */
+  .image-preview {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .image-preview img {
+    max-width: 100%; /* Responsive image */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space below image */
+  }
+  
+  /* Prediction Result */
+  .prediction-result {
+    margin-top: 20px;
+  }
+  
+  .prediction-result h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .prediction-result p {
+    font-size: 1.2rem;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    margin-top: 20px;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    margin-top: 20px;
+  }
+  
+  .loading-spinner p {
+    font-size: 1.2rem;
+  }
