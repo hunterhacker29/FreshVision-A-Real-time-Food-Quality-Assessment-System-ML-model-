@@ -1,168 +1,197 @@
-/* General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://officechai.com/wp-content/uploads/2016/02/flipkart-nearby.jpg'); /* Replace with your background image URL */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-  }
-  
-  /* Navbar Styling */
-  .navbar {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    border-radius: 0 0 25px 25px; /* Full-radius at bottom */
-  }
-  
-  .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-links li {
-    cursor: pointer;
-  }
-  
-  .navbar-links li:hover {
-    text-decoration: underline;
-  }
-  
-  /* Container for card */
-  .image-upload-container {
-    padding: 150px 20px; /* Padding adjusted for spacing from navbar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 70px); /* Take full height minus the navbar */
-  }
-  
-  /* Upload Card Styling */
-  .upload-card {
-    max-width: 800px; /* Set max width for the card */
-    width: 100%; /* Make it responsive */
-    margin: 20px; /* Margin for the card */
-    padding: 30px; /* Padding for the card */
-    background-color: rgba(255, 255, 255, 0.95); /* White background with transparency */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
-    text-align: center;
-  }
-  
-  /* Heading */
-  .upload-card h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Date Display */
-  .current-date {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Form Styles */
-  .upload-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  /* Upload Input Styling */
-  #file-input {
-    display: none;
-  }
-  
-  .upload-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .upload-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .submit-button {
-    padding: 12px 30px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #218838;
-  }
-  
-  /* Image Preview Styling */
-  .image-preview {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .image-preview img {
-    max-width: 100%; /* Responsive image */
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px; /* Space below image */
-  }
-  
-  /* Prediction Result */
-  .prediction-result {
-    margin-top: 20px;
-  }
-  
-  .prediction-result h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .prediction-result p {
-    font-size: 1.2rem;
-  }
-  
-  /* Error Message */
-  .error-message {
-    color: red;
-    margin-top: 20px;
-  }
-  
-  /* Loading Spinner */
-  .loading-spinner {
-    margin-top: 20px;
-  }
-  
-  .loading-spinner p {
-    font-size: 1.2rem;
-  }
+/* ImageUploadNew.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://entrackr.com/storage/2020/03/flipkart-grocery-image.jpg'); /* Replace with your background image path */
+  background-size: cover; /* Ensures the background covers the entire screen */
+  background-position: center; /* Centers the background image */
+}
+
+.image-upload-container {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* More transparent (0.7) */
+  position: relative;
+  z-index: 1; /* Keeps the container above the background */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-container {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.current-date {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.frame-heading {
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form-container {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.custom-file-input,
+.temperature-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.custom-file-input:focus,
+.temperature-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+.image-preview {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.image-container {
+  width: 48%;
+  position: relative;
+  border: 1px dashed #007bff; /* Dashed border for upload image area */
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(230, 240, 255, 0.5); /* Light background color */
+}
+
+.image-preview-img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.result-container {
+  margin-top: 20px;
+}
+
+.prediction-result {
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #e7f1ff;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.ocr-result {
+  margin-top: 20px;
+}
+
+.ocr-image {
+  margin-top: 10px;
+}
+
+.ocr-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
