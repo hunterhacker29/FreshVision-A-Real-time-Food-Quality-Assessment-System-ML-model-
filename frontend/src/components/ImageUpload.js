@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import '../css/ImageUpload.css'; // Import the CSS file for styling
+import '../css/ImageUpload.css';
 
 const ImageUpload = () => {
-  const [selectedImage, setSelectedImage] = useState(null); // State to store the selected image URL
-  const [prediction, setPrediction] = useState(null); // State to store the prediction result
-  const [error, setError] = useState(null); // State to store any error messages
-  const [loading, setLoading] = useState(false); // State for loading indicator
-  const [currentDate, setCurrentDate] = useState(''); // State for current date
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [prediction, setPrediction] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [currentDate, setCurrentDate] = useState('');
 
-  // Set current date
   useEffect(() => {
     const today = new Date();
     const formattedDate = today.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     setCurrentDate(formattedDate);
   }, []);
 
-  // Function to handle image selection
   const handleImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
-      setSelectedImage(URL.createObjectURL(img)); // Create a URL for the selected image
-      setPrediction(null); // Reset previous predictions
-      setError(null); // Reset previous errors
+      setSelectedImage(URL.createObjectURL(img));
+      setPrediction(null);
+      setError(null);
     }
   };
 
-  // Function to handle form submission
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
 
     if (!selectedImage) {
       setError('Please select an image before submitting.');
@@ -35,8 +32,8 @@ const ImageUpload = () => {
     }
 
     const formData = new FormData();
-    formData.append('file', event.target.elements.file.files[0]); // Append the selected file
-    setLoading(true); // Start loading spinner
+    formData.append('file', event.target.elements.file.files[0]);
+    setLoading(true);
 
     try {
       const response = await fetch('http://127.0.0.1:5000', {
@@ -48,24 +45,23 @@ const ImageUpload = () => {
         const errorData = await response.json();
         setError(errorData.error || 'An error occurred while processing the image.');
         setPrediction(null);
-        setLoading(false); // Stop loading spinner
+        setLoading(false);
         return;
       }
 
       const data = await response.json();
-      setPrediction(data); // Set the prediction result
-      setError(null); // Clear any previous errors
-      setLoading(false); // Stop loading spinner
+      setPrediction(data);
+      setError(null);
+      setLoading(false);
     } catch (err) {
       setError('Failed to connect to the server. Please try again later.');
       setPrediction(null);
-      setLoading(false); // Stop loading spinner
+      setLoading(false);
     }
   };
 
   return (
     <div className="image-upload-container">
-      {/* Navigation Bar */}
       <nav className="navbar">
         <div className="navbar-logo">Flipkart</div>
         <ul className="navbar-links">
@@ -79,7 +75,7 @@ const ImageUpload = () => {
       <div style={{ marginTop: '100px', display: 'flex', justifyContent: 'center' }}>
         <div className="upload-card">
           <h1>Fruit Freshness & Shelf Life Prediction</h1>
-          <p className="current-date">{currentDate}</p> {/* Display current date */}
+          <p className="current-date">{currentDate}</p>
           <form onSubmit={handleSubmit} className="upload-form">
             <input
               type="file"
@@ -105,7 +101,6 @@ const ImageUpload = () => {
           {loading && (
             <div className="loading-spinner">
               <p>Loading...</p>
-              {/* You can add a loading spinner here */}
             </div>
           )}
 
