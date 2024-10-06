@@ -5,31 +5,10 @@ items and assess their freshness. Participating teams are required to train the 
 items such as fresh fruits, vegetables, and other food items like bread.
 
 
-Proposed System: Fruit Freshness and Shelf Life Prediction Using Image Processing and CNN Model
-Overview:
-The system aims to predict the freshness and shelf life of fruits and vegetables using image processing techniques, powered by a Convolutional Neural Network (CNN). Users can upload images of fresh produce, and the system will output the predicted freshness level and estimated remaining shelf life. Additionally, the system will incorporate user inputs regarding storage temperature to predict shelf life accurately, including extended shelf life predictions.
-
-Key Features:
-Image Upload:
-
-Users can easily upload images of fresh produce (fruits and vegetables) through an intuitive web application interface.
-Freshness Level Prediction:
-
-The CNN model analyzes visual cues and patterns from the uploaded images to assess the freshness level of the produce.
-Shelf Life Estimation:
-
-The system predicts the remaining shelf life based on the freshness level determined by the CNN model.
-User Input for Storage Conditions:
-
-Users can input the storage temperature of the produce. The system utilizes this data to enhance the accuracy of shelf life predictions, including calculations for extended shelf life based on optimal storage conditions.
-OCR Integration:
-
-Users can upload a tag or label from the produce packaging. Optical Character Recognition (OCR) technology will extract relevant information, such as the manufacturing date and expiration date, from the label.
-This data will be integrated into the freshness and shelf life predictions, providing users with comprehensive information regarding their produce.
-Web Application:
-
-The proposed system will be implemented as a web application, making it accessible on various devices.
-The web interface will display results, including freshness levels, estimated shelf life, and relevant information extracted from the product label.
-Conclusion:
-This comprehensive system will empower users to make informed decisions about their fresh produce, helping them minimize waste and enhance food safety. By leveraging advanced technologies like CNN and OCR, the proposed solution aims to create a seamless experience for users while ensuring accurate predictions regarding the freshness and shelf life of their fruits and vegetables.
-
+Proposed System: 
+The proposed system utilizes image processing techniques and a CNN model to predict the freshness and 
+shelf life of fruits and vegetables. Users can upload images of produce, and the system will assess freshness 
+levels and estimate remaining shelf life. Additionally, users can input storage temperature to enhance prediction accuracy.
+The system incorporates OCR technology to extract relevant information from product labels, providing comprehensive data for 
+freshness and shelf life predictions. A user-friendly web application interface will display results, including freshness levels, 
+estimated shelf life, and label information, empowering users to make informed decisions about their fresh produce and minimize waste.
