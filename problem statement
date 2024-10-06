@@ -1,0 +1,12 @@
+Problem Statement:
+Develop a model for detecting the freshness of fresh produce, specifically fruits and vegetables,
+by analyzing various visual cues and patterns. The model should predict the shelf life of these 
+items and assess their freshness. Participating teams are required to train the model on perishable
+items such as fresh fruits, vegetables, and other food items like bread.
+
+Proposed System: Fruit Freshness and Shelf Life Prediction using Image Processing and CNN Model
+
+Overview: The system aims to predict the freshness and shelf life of fruits and vegetables using 
+image processing techniques, powered by a Convolutional Neural Network (CNN). The goal is to provide 
+an intuitive interface for users to upload images of fresh produce, and the system will output the predicted 
+freshness level and estimated remaining shelf life.
