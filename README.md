@@ -2,7 +2,7 @@
  To resolve the "Unknown" shelf life issue, log the predicted class and verify its match with the shelf_life_class_days mapping. If there's a mismatch, update the mapping. Alternatively, simplify the process by eliminating the second model and directly map freshness_label to shelf life using a predefined dictionary.
 
 # saved model https://drive.google.com/drive/u/0/folders/19Ac7m3G14GlulbG4tuju0rNQCwOjJgp9
-# live demo video : https://www.youtube.com/watch?v=qXn9GLxvkpQ
+# live demo video : https://youtu.be/skYviwIwA6E?si=oWN6-gG7OZfEIjNM
 ![Screenshot (130)](https://github.com/user-attachments/assets/931d56c7-cc7d-4661-81e8-6624ca2e7d11)
 ![Screenshot (131)](https://github.com/user-attachments/assets/133eeca5-ff2a-4acb-b219-101273a739fa)
 ![Screenshot (132)](https://github.com/user-attachments/assets/a799cbff-64d0-4620-a25c-af9c3110ff29)
