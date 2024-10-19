@@ -1,29 +1,43 @@
-
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import productsData from '../components/data.json'; // Adjust the path to your JSON file
+import '../css/about.css'; // Import custom CSS for additional styles
 
-const ImageUploadNew = () => {
-  const [productImage, setProductImage] = useState(null);
-  const [productPreview, setProductPreview] = useState(null);
+const ImageUploadNew= () => {
+  const [freshnessImage, setFreshnessImage] = useState(null);
+  const [labelImage, setLabelImage] = useState(null);
+  const [freshnessPreview, setFreshnessPreview] = useState(null);
+  const [labelPreview, setLabelPreview] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [productInfo, setProductInfo] = useState(null);
+  const [ocrInfo, setOcrInfo] = useState(null); // State for OCR information
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleProductImageChange = (event) => {
+  const handleFreshnessImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
-      setProductImage(img);
-      setProductPreview(URL.createObjectURL(img));
+      setFreshnessImage(img);
+      setFreshnessPreview(URL.createObjectURL(img));
       setPrediction(null);
       setProductInfo(null);
+      setOcrInfo(null); // Reset OCR info
+      setError(null);
+    }
+  };
+
+  const handleLabelImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+      setLabelImage(img);
+      setLabelPreview(URL.createObjectURL(img));
+      setPrediction(null);
+      setProductInfo(null);
+      setOcrInfo(null); // Reset OCR info
       setError(null);
     }
   };
@@ -31,26 +45,27 @@ const ImageUploadNew = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!productImage) {
-      setError('Please select a product image before submitting.');
+    if (!freshnessImage || !labelImage) {
+      setError('Please select both freshness and label images before submitting.');
       return;
     }
 
     const formData = new FormData();
-    formData.append('product_image', productImage);
+    formData.append('freshness_image', freshnessImage);
+    formData.append('label_image', labelImage);
 
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/', { 
+      const response = await fetch('http://127.0.0.1:5000/', {
         method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.error || 'An error occurred while processing the image.');
+        setError(errorData.error || 'An error occurred while processing the images.');
         setPrediction(null);
         setLoading(false);
         return;
@@ -64,108 +79,122 @@ const ImageUploadNew = () => {
 
       // Find product information based on freshness
       const product = productsData.products.find(
-        (item) => item.name.toLowerCase().includes(data.freshness.toLowerCase())
+        (p) => p.name.toLowerCase() === data.freshness.toLowerCase()
       );
 
-      setProductInfo(product || { name: 'Unknown', shelf_life_days: 'N/A', description: 'No description available.' });
-      setLoading(false);
-    } catch (err) {
-      setError('Failed to connect to the server. Please try again later.');
-      setPrediction(null);
+      if (product) {
+        setProductInfo(product);
+      }
+
+      setOcrInfo(data.ocr_info); // Set the OCR info
+    } catch (error) {
+      setError('An error occurred while fetching the prediction.');
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Freshvision</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="about-container">
+      <Navbar bg="light" variant="bright" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">Freshness Detection System</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something else here</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-      {/* Main content */}
-      <div className="container mt-4">
-        {/* Upload Section */}
-        <h2 className="text-center mb-4">Upload Product Image</h2>
-        <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-light">
-          <div className="form-group">
-            <label htmlFor="productImage" className="font-weight-bold">Upload Product Image:</label>
-            <input
-              type="file"
-              className="form-control-file mt-2"
-              id="productImage"
-              accept="image/*"
-              onChange={handleProductImageChange}
-              required
+      <Container className="mt-4">
+        <h2 className="text-center text-white">Freshness Detection System</h2>
+        <form onSubmit={handleSubmit} className="bg-light p-4 rounded shadow">
+          <div className="mb-3">
+            <label htmlFor="freshnessImageInput" className="form-label">Freshness Detection Image:</label>
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleFreshnessImageChange} 
+              className="form-control" 
+              required 
             />
+            {freshnessPreview && (
+              <img 
+                src={freshnessPreview} 
+                alt="Freshness Preview" 
+                className="img-thumbnail mt-2" 
+                style={{ maxWidth: '300px' }} // Limit the size of the image
+              />
+            )}
           </div>
 
-          <button type="submit" className="btn btn-primary mt-3">Upload Image</button>
+          <div className="mb-3">
+            <label htmlFor="labelImageInput" className="form-label">Label Image for OCR:</label>
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleLabelImageChange} 
+              className="form-control" 
+              required 
+            />
+            {labelPreview && (
+              <img 
+                src={labelPreview} 
+                alt="Label Preview" 
+                className="img-thumbnail mt-2" 
+                style={{ maxWidth: '300px' }} // Limit the size of the image
+              />
+            )}
+          </div>
+
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+            {loading ? 'Processing...' : 'Submit'}
+          </button>
         </form>
 
-        {/* Preview Image */}
-        {productPreview && (
-          <div className="mt-4 text-center">
-            <h5>Product Preview:</h5>
-            <img src={productPreview} alt="Product Preview" className="img-fluid" style={{ maxWidth: '300px' }} />
-          </div>
-        )}
+        {error && <p className="text-danger mt-3">{error}</p>}
 
-        {/* Error Message */}
-        {error && (
-          <div className="alert alert-danger mt-3">
-            {error}
-          </div>
-        )}
-
-        {/* Loading */}
-        {loading && <p className="mt-3 text-center">Loading...</p>}
-
-        {/* Prediction Result */}
         {prediction && (
           <div className="mt-4">
-            <h4 className="font-weight-bold">Prediction Result</h4>
-            <ul className="list-group mt-3">
-              <li className="list-group-item"><strong>Freshness:</strong> {prediction.freshness}</li>
-              <li className="list-group-item"><strong>Shelf Life:</strong> {prediction.shelf_life}</li>
-            </ul>
+            <h3 className="text-white">Prediction Result:</h3>
+            <div className="card bg-light text-dark" style={{ opacity: 0.8 }}> {/* Greyish transparent card */}
+              <div className="card-body">
+                <p><strong>Freshness:</strong> {prediction.freshness}</p>
+                <p><strong>Shelf Life:</strong> {prediction.shelf_life} days</p>
+                <hr /> {/* Horizontal line for separation */}
+                <h4>Product Information:</h4>
+                <p><strong>Name:</strong> {productInfo?.name}</p>
+                <p><strong>Shelf Life (Days):</strong> {productInfo?.shelf_life_days}</p>
+                <p><strong>Description:</strong> {productInfo?.description}</p>
+                <hr /> {/* Horizontal line for separation */}
+                {/* Display OCR information */}
+                {ocrInfo ? (
+                  <div>
+                    <h4>OCR Information:</h4>
+                    <p><strong>Expiry Date:</strong> {ocrInfo.expiry_date || 'N/A'}</p>
+                    <p><strong>MFG Date:</strong> {ocrInfo.mfg_date || 'N/A'}</p>
+                    <p><strong>Best Before:</strong> {ocrInfo.best_before || 'N/A'}</p>
+                  </div>
+                ) : (
+                  <p className="text-muted">No OCR information available.</p>
+                )}
+              </div>
+            </div>
           </div>
         )}
-
-        {/* Product Information */}
-        {productInfo && (
-          <div className="mt-4">
-            <h4 className="font-weight-bold">Product Information</h4>
-            <ul className="list-group mt-3">
-              <li className="list-group-item"><strong>Name:</strong> {productInfo.name}</li>
-              <li className="list-group-item"><strong>Shelf Life (Days):</strong> {productInfo.shelf_life_days}</li>
-              <li className="list-group-item"><strong>Description:</strong> {productInfo.description}</li>
-            </ul>
-          </div>
-        )}
-      </div>
+      </Container>
     </div>
   );
 };
 
 export default ImageUploadNew;
-
