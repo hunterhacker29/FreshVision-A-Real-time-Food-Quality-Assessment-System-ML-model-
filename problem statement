@@ -10,3 +10,7 @@ The proposed system utilizes image processing techniques and a CNN model to pred
 shelf life of fruits and vegetables. Users can upload images of produce, and the system will assess freshness 
 levels and estimate remaining shelf life. Additionally, users can input storage temperature . A user-friendly web application interface will display results, including freshness levels, 
 estimated shelf life, and label information, empowering users to make informed decisions about their fresh produce and minimize waste.
+
+
+# video
+https://www.youtube.com/watch?v=qXn9GLxvkpQ
