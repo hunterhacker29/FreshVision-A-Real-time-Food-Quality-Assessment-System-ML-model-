@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "Fresh Apples",
+      "shelf_life_days": 5,
+      "description": "Crisp and juicy, fresh apples are a great source of fiber and vitamin C. They promote heart health and help reduce the risk of chronic diseases. Perfect for snacking or adding to salads."
+    },
+    {
+      "id": 1,
+      "name": "Fresh Banana",
+      "shelf_life_days": 14,
+      "description": "Rich in potassium, fresh bananas are perfect for a quick snack. They provide energy and are great for muscle recovery post-exercise. Enjoy them on their own or in smoothies."
+    },
+    {
+      "id": 2,
+      "name": "Fresh Bitter Gourd",
+      "shelf_life_days": 10,
+      "description": "Known for its bitter taste, bitter gourd is rich in vitamins and minerals. It's beneficial for blood sugar control and may help lower cholesterol levels. Commonly used in stir-fries and juices."
+    },
+    {
+      "id": 3,
+      "name": "Fresh Capsicum",
+      "shelf_life_days": 5,
+      "description": "Sweet and crunchy, fresh capsicum adds color and flavor to your dishes. They are high in antioxidants and vitamins A and C. Ideal for salads, stir-fries, and grilling."
+    },
+    {
+      "id": 4,
+      "name": "Fresh Cucumber",
+      "shelf_life_days": 15,
+      "description": "Refreshing and hydrating, fresh cucumbers are low in calories and high in water. They are perfect for salads and as snacks. Cucumbers also contain antioxidants that promote healthy skin."
+    },
+    {
+      "id": 5,
+      "name": "Fresh Okra",
+      "shelf_life_days": 20,
+      "description": "Rich in fiber and nutrients, fresh okra is a versatile vegetable. It aids digestion and is known for its anti-inflammatory properties. Commonly used in gumbo and stir-fried dishes."
+    },
+    {
+      "id": 6,
+      "name": "Fresh Oranges",
+      "shelf_life_days": 10,
+      "description": "Citrusy and sweet, fresh oranges are an excellent source of vitamin C. They boost the immune system and promote skin health. Great for eating fresh or juicing."
+    },
+    {
+      "id": 7,
+      "name": "Fresh Potato",
+      "shelf_life_days": 2,
+      "description": "A staple in many diets, fresh potatoes are versatile and filling. They provide energy through carbohydrates and are rich in potassium. Ideal for baking, boiling, or frying."
+    },
+    {
+      "id": 8,
+      "name": "Fresh Tomato",
+      "shelf_life_days": 4,
+      "description": "Juicy and flavorful, fresh tomatoes are a great addition to salads and sauces. They are rich in lycopene, which may reduce the risk of certain cancers. Perfect for salads, sauces, or sandwiches."
+    },
+    {
+      "id": 9,
+      "name": "Rotten Apples",
+      "shelf_life_days": 6,
+      "description": "Rotten apples are not safe to eat and should be discarded. Consuming spoiled fruits can lead to foodborne illnesses."
+    },
+    {
+      "id": 10,
+      "name": "Rotten Banana",
+      "shelf_life_days": 0,
+      "description": "Rotten bananas are not edible and should be discarded. They can attract pests and should not be consumed."
+    },
+    {
+      "id": 11,
+      "name": "Rotten Bitter Gourd",
+      "shelf_life_days": 5,
+      "description": "Rotten bitter gourd is unsafe for consumption and should be thrown away. Spoiled vegetables may cause digestive issues."
+    },
+    {
+      "id": 12,
+      "name": "Rotten Capsicum",
+      "shelf_life_days": 15,
+      "description": "Rotten capsicum is not suitable for eating and should be disposed of. Spoiled vegetables can harbor harmful bacteria."
+    },
+    {
+      "id": 13,
+      "name": "Rotten Cucumber",
+      "shelf_life_days": 10,
+      "description": "Rotten cucumbers are inedible and should be discarded. Eating spoiled cucumbers can lead to discomfort."
+    },
+    {
+      "id": 14,
+      "name": "Rotten Okra",
+      "shelf_life_days": 0,
+      "description": "Rotten okra is not safe to eat and must be thrown away. Discard spoiled produce to avoid health risks."
+    },
+    {
+      "id": 15,
+      "name": "Rotten Oranges",
+      "shelf_life_days": 0,
+      "description": "Rotten oranges are not safe for consumption and should be discarded. They can cause gastrointestinal problems."
+    },
+    {
+      "id": 16,
+      "name": "Rotten Potato",
+      "shelf_life_days": 0,
+      "description": "Rotten potatoes are inedible and should be disposed of. Spoiled potatoes may contain toxins."
+    },
+    {
+      "id": 17,
+      "name": "Rotten Tomato",
+      "shelf_life_days": 0,
+      "description": "Rotten tomatoes are not safe to eat and should be thrown away. Spoiled tomatoes can be harmful if ingested."
+    }
+  ]
+}
