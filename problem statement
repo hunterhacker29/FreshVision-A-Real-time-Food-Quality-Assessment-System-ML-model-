@@ -6,11 +6,12 @@ items such as fresh fruits, vegetables, and other food items like bread.
 
 
 Proposed System: 
-The proposed system utilizes image processing techniques and a CNN model to predict the freshness and 
-shelf life of fruits and vegetables. Users can upload images of produce, and the system will assess freshness 
-levels and estimate remaining shelf life. Additionally, users can input storage temperature . A user-friendly web application interface will display results, including freshness levels, 
-estimated shelf life, and label information, empowering users to make informed decisions about their fresh produce and minimize waste.
+The proposed system utilizes image processing techniques, a CNN model, and OCR functionality to predict 
+the freshness and shelf life of fruits and vegetables. Users can upload images of produce, and the system
+will assess freshness levels and estimate remaining shelf life. Additionally, users can input storage temperature
+to improve prediction accuracy. The integrated OCR allows users to upload pictures of produce tags or labels, 
+extracting relevant information like product name or expiration date. A user-friendly web interface will display 
+freshness levels, estimated shelf life, and extracted label data, helping users make informed decisions and reduce waste.
 
 
-# video
-https://www.youtube.com/watch?v=qXn9GLxvkpQ
+
