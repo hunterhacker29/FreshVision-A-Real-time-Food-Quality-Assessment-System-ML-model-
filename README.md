@@ -3,6 +3,21 @@
 
 # saved model https://drive.google.com/drive/u/0/folders/19Ac7m3G14GlulbG4tuju0rNQCwOjJgp9
 # live demo video : https://youtu.be/skYviwIwA6E?si=oWN6-gG7OZfEIjNM
+
+Problem Statement:
+Develop a model for detecting the freshness of fresh produce, specifically fruits and vegetables,
+by analyzing various visual cues and patterns. The model should predict the shelf life of these 
+items and assess their freshness. Participating teams are required to train the model on perishable
+items such as fresh fruits, vegetables, and other food items like bread.
+
+Proposed System: 
+The proposed system utilizes image processing techniques, a CNN model, and OCR functionality to predict 
+the freshness and shelf life of fruits and vegetables. Users can upload images of produce, and the system
+will assess freshness levels and estimate remaining shelf life. Additionally, users can input storage temperature
+to improve prediction accuracy. The integrated OCR allows users to upload pictures of produce tags or labels, 
+extracting relevant information like product name or expiration date. A user-friendly web interface will display 
+freshness levels, estimated shelf life, and extracted label data, helping users make informed decisions and reduce waste.
+
 # model
 ![Screenshot (341)](https://github.com/user-attachments/assets/3dc1ff49-3c74-4da8-828a-67de5da9c8df)
 ![Screenshot (130)](https://github.com/user-attachments/assets/931d56c7-cc7d-4661-81e8-6624ca2e7d11)
