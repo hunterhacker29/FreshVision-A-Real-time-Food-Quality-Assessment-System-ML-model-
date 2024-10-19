@@ -1,9 +1,14 @@
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import os
+import cv2
+import pytesseract
+import re
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
@@ -41,19 +46,67 @@ def prepare_image(file_path):
     img_array = image.img_to_array(img) / 255.0
     return np.expand_dims(img_array, axis=0)
 
+def preprocess_image(image):
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # Apply CLAHE
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+    enhanced = clahe.apply(gray)
+    # Apply Otsu's thresholding
+    _, thresh = cv2.threshold(enhanced, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+    # Dilate the image
+    kernel = np.ones((3,3), np.uint8)
+    dilated = cv2.dilate(thresh, kernel, iterations=1)
+    return dilated
+
+def extract_info_from_label(image_path):
+    image = cv2.imread(image_path)
+    if image is None:
+        return None
+    
+    processed_image = preprocess_image(image)
+    text = pytesseract.image_to_string(processed_image)
+    expiry_date = extract_date(text, r'(?i)exp(?:iry)?\.?\s*date:?\s*([\d\w]+)')
+    mfg_date = extract_date(text, r'(?i)mfg\.?\s*date:?\s*=?\s*([\d\w]+)')
+    best_before = extract_date(text, r'(?i)best\s*before:?\s*([\d\w]+)')
+    
+    return {
+        'expiry_date': expiry_date,
+        'mfg_date': mfg_date,
+        'best_before': best_before
+    }
+
+def extract_date(text, pattern):
+    match = re.search(pattern, text)
+    if match:
+        date_str = match.group(1)
+        day = date_str[:2].replace('O', '0')
+        month = date_str[2:-4]
+        year = date_str[-4:]
+        try:
+            parsed_date = datetime.strptime(f"{day} {month} {year}", "%d %b %Y").date()
+            return parsed_date
+        except ValueError:
+            pass
+    return None
+
 # API route for prediction
 @app.route('/', methods=['POST'])
 def predict():
     try:
-        product_file = request.files['product_image']
+        freshness_file = request.files['freshness_image']
+        label_file = request.files['label_image']
 
-        if product_file.filename == '':
+        if freshness_file.filename == '' or label_file.filename == '':
             return jsonify({"error": "Both files must have a valid filename."}), 400
 
-        product_path = os.path.join(UPLOAD_FOLDER, product_file.filename)
-        product_file.save(product_path)
+        freshness_path = os.path.join(UPLOAD_FOLDER, freshness_file.filename)
+        label_path = os.path.join(UPLOAD_FOLDER, label_file.filename)
 
-        prepared_image = prepare_image(product_path)
+        freshness_file.save(freshness_path)
+        label_file.save(label_path)
+
+        prepared_image = prepare_image(freshness_path)
 
         freshness_prediction = freshness_model.predict(prepared_image)
         freshness_class = np.argmax(freshness_prediction, axis=-1)[0]
@@ -63,18 +116,20 @@ def predict():
         shelf_life_class = np.argmax(shelf_life_prediction, axis=-1)[0]
         base_shelf_life = shelf_life_class_days.get(shelf_life_class, 0)
 
-        os.remove(product_path)
+        # Perform OCR
+        ocr_info = extract_info_from_label(label_path)
+
+        os.remove(freshness_path)
+        os.remove(label_path)
 
         response = {
             "freshness": food_type,
-            "shelf_life": base_shelf_life,  # This is the updated key
+            "shelf_life": base_shelf_life,
+            "ocr_info": ocr_info  # Include OCR information in the response
         }
 
-        if 'Rotten' in food_type:
-            response['status'] = 'Wasted'
-            response['status_color'] = 'red'
-        else:
-            response['status'] = 'Fresh'
+        response['status'] = 'Wasted' if 'Rotten' in food_type else 'Fresh'
+        response['status_color'] = 'red' if response['status'] == 'Wasted' else 'green'
 
         return jsonify(response)
 
