@@ -1,5 +1,3 @@
-
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
@@ -50,14 +48,18 @@ def prepare_image(file_path):
 def preprocess_image(image):
     # Convert to grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    # Apply CLAHE
+    
+    # Apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
     clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
     enhanced = clahe.apply(gray)
+    
     # Apply Otsu's thresholding
     _, thresh = cv2.threshold(enhanced, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
-    # Dilate the image
+    
+    # Dilate the image to make text thicker
     kernel = np.ones((3,3), np.uint8)
     dilated = cv2.dilate(thresh, kernel, iterations=1)
+    cv2.imshow('dialated',dilated)
     return dilated
 
 def extract_info_from_label(image_path):
@@ -126,7 +128,7 @@ def predict():
         response = {
             "freshness": food_type,
             "shelf_life": base_shelf_life,
-            "ocr_info": ocr_info  # Include OCR information in the response
+            "ocr_info": ocr_info
         }
 
         response['status'] = 'Wasted' if 'Rotten' in food_type else 'Fresh'
