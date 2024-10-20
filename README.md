@@ -1,7 +1,7 @@
 # FreshVision-A-Real-time-Food-Quality-Assessment-System-ML-model- Flipkart hackathon 
 To resolve the "Unknown" shelf life issue, log the predicted class and verify its match with the shelf_life_class_days mapping. If there's a mismatch, update the mapping. Alternatively, simplify the process by eliminating the second model and directly map freshness_label to shelf life using a predefined dictionary.
 
-#saved model https://drive.google.com/drive/u/0/folders/19Ac7m3G14GlulbG4tuju0rNQCwOjJgp9
+
 
 #live demo video : https://youtu.be/skYviwIwA6E?si=oWN6-gG7OZfEIjNM
 
@@ -32,11 +32,9 @@ freshness levels, estimated shelf life, and extracted label data, helping users 
 ![Screenshot (183)](https://github.com/user-attachments/assets/358aff62-1d55-4856-83e7-1fd5d8100fd6)
 ![Screenshot (184)](https://github.com/user-attachments/assets/cf5c3dbb-47c8-43cf-8138-06fa10f61fff)
 # website
-![Screenshot (339)](https://github.com/user-attachments/assets/5657bec2-e412-432c-bf23-5022bd0049e9)
-![Screenshot (340)](https://github.com/user-attachments/assets/d9f4d12c-5f9e-4a37-9173-d96fb0ff0ee2)
-![Screenshot (341)](https://github.com/user-attachments/assets/8f7dafe5-ed83-4e74-95b4-ed0bb5568b39)
-![Screenshot (342)](https://github.com/user-attachments/assets/03e63a28-b08d-4334-8d3f-921cbee964f3)
-![Screenshot (345)](https://github.com/user-attachments/assets/6950faf6-9ff1-4f00-aad7-e2cc717b1109)
-![Screenshot (344)](https://github.com/user-attachments/assets/0be26a22-6643-44b2-bf6b-5ffda9c172d7)
-![Screenshot (347)](https://github.com/user-attachments/assets/4035f7e5-cef3-4742-b1b1-e59b3c63a271)
-![Screenshot (348)](https://github.com/user-attachments/assets/fbc60b5a-5b0d-4f21-b944-7e2c13f7d6f7)
+![Screenshot 2024-10-20 115607](https://github.com/user-attachments/assets/e54fccc0-12d7-4ba2-a531-0e6ecb59f6a3)
+![Screenshot 2024-10-20 115520](https://github.com/user-attachments/assets/f4ac30da-12f6-4295-bb2b-1d1500c24b74)
+![Screenshot 2024-10-20 115402](https://github.com/user-attachments/assets/b17c2291-daed-48dc-93b7-052d4ea764e5)
+![Screenshot 2024-10-20 115414](https://github.com/user-attachments/assets/f47015d4-bf66-42ad-ba31-4aef58e0b188)
+![Screenshot 2024-10-20 115318](https://github.com/user-attachments/assets/4896df39-cb87-4402-8dc7-b6a7af25edf5)
+![Screenshot 2024-10-20 115333](https://github.com/user-attachments/assets/b7517a6f-060b-425c-90b0-2c022bf79e41)
