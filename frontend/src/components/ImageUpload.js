@@ -182,8 +182,7 @@ const ImageUploadNew= () => {
                   <div>
                     <h4>OCR Information:</h4>
                     <p><strong>Expiry Date:</strong> {ocrInfo.expiry_date || 'N/A'}</p>
-                    <p><strong>MFG Date:</strong> {ocrInfo.mfg_date || 'N/A'}</p>
-                    <p><strong>Best Before:</strong> {ocrInfo.best_before || 'N/A'}</p>
+                 
                   </div>
                 ) : (
                   <p className="text-muted">No OCR information available.</p>
