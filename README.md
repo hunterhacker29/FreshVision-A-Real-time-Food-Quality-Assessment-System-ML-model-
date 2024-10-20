@@ -2,7 +2,7 @@
 To resolve the "Unknown" shelf life issue, log the predicted class and verify its match with the shelf_life_class_days mapping. If there's a mismatch, update the mapping. Alternatively, simplify the process by eliminating the second model and directly map freshness_label to shelf life using a predefined dictionary.
 
 
-#live demo video : https://www.youtube.com/watch?v=nC0T6KHsmHE
+#live demo video : https://www.youtube.com/watch?v=Dng16AcHYEw
 
 Problem Statement:
 Develop a model for detecting the freshness of fresh produce, specifically fruits and vegetables,
